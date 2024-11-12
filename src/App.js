@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import ComicsComponent from './components/ComicsComponent';
+import ComicsFavoritos from './components/ComicsFavoritos';
+import './App.css'; 
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <Router>
+            <div className="app-title">
+                <img src="/marvel.png" alt="Marvel Logo" className="marvel-logo" />
+            </div>
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<Navigate to="/comics" />} />
+                <Route path="/comics" element={<ComicsComponent />} />
+                <Route path="/favoritos" element={<ComicsFavoritos />} />
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;
